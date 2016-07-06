@@ -1,15 +1,12 @@
 package com.atrium.club.pojo;
 
-import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by romain on 05/07/2016.
  */
 public class Club {
-    private FacebookPublish facebook_publish = new FacebookPublish();
     private String name = "";
-    List<Member> members = new LinkedList<>();
     private String logo = "";
     private String description = "";
     private String facebook_page = "";
@@ -19,23 +16,13 @@ public class Club {
     public Club() {
     }
 
-    public Club(FacebookPublish facebook_publish, String name, List<Member> members, String logo, String description, String facebook_page, String id, String slug) {
-        this.facebook_publish = facebook_publish;
+    public Club(String name, String logo, String description, String facebook_page, String id, String slug) {
         this.name = name;
-        this.members = members;
         this.logo = logo;
         this.description = description;
         this.facebook_page = facebook_page;
         this.id = id;
         this.slug = slug;
-    }
-
-    public FacebookPublish getFacebook_publish() {
-        return facebook_publish;
-    }
-
-    public void setFacebook_publish(FacebookPublish facebook_publish) {
-        this.facebook_publish = facebook_publish;
     }
 
     public String getName() {
@@ -44,14 +31,6 @@ public class Club {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<Member> getMembers() {
-        return members;
-    }
-
-    public void setMembers(List<Member> members) {
-        this.members = members;
     }
 
     public String getLogo() {
