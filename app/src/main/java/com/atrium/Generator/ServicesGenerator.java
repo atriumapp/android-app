@@ -1,4 +1,4 @@
-package com.atrium.Generator;
+package com.atrium.generator;
 
 import android.util.Log;
 
@@ -6,11 +6,8 @@ import java.io.IOException;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.Response;
-import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
-import okio.Buffer;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -31,14 +28,12 @@ public class ServicesGenerator {
             return response;
         }
     };
-    
+
     //permet de logger les info de la requête
     private static HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
 
     private static Retrofit.Builder builder = new Retrofit.Builder()
             .baseUrl(URL)
-            .client(
-                    new OkHttpClient.Builder().build())
             .addConverterFactory(GsonConverterFactory.create());
 
 

@@ -4,13 +4,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.atrium.Generator.ServicesGenerator;
+import com.atrium.event.pojo.Event;
+import com.atrium.event.service.EventService;
+import com.atrium.generator.ServicesGenerator;
 import com.atrium.club.pojo.Club;
 import com.atrium.club.service.ClubService;
+import com.atrium.pojo.utils.PaginationResponse;
 
-import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
-import java.util.logging.Logger;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,23 +26,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ClubService clubService = ServicesGenerator.createService(ClubService.class);
+        EventService eventService = ServicesGenerator.createService(EventService.class);
 
-        Call<List<Club>> call = clubService.getClubs();
+        Map<String, String> options = new HashMap<String, String>();
+        options.put("club", "bda");
 
-        call.enqueue(new Callback<List<Club>>() {
+        Call<PaginationResponse<Event>> request = eventService.findEventByClub(options);
+
+        request.enqueue(new Callback<PaginationResponse<Event>>() {
             @Override
-            public void onResponse(Call<List<Club>> call, Response<List<Club>> response) {
-                if(response.isSuccessful()){
-                    List<Club> clubs = response.body();
-                }else{
-                    Log.d("Error Response", response.toString());
-                }
+            public void onResponse(Call<PaginationResponse<Event>> call, Response<PaginationResponse<Event>> response) {
+                List<Event> test = response.body().getResults();
             }
 
             @Override
-            public void onFailure(Call<List<Club>> call, Throwable t) {
-                Log.e("Failure", call.toString(), t);
+            public void onFailure(Call<PaginationResponse<Event>> call, Throwable t) {
+                Log.e("Error request", "Error dureing request", t);
             }
         });
 

@@ -1,6 +1,8 @@
 package com.atrium.club.service;
 
 import com.atrium.club.pojo.Club;
+import com.atrium.club.pojo.ClubDetail;
+import com.atrium.club.pojo.ListClubs;
 
 import java.util.List;
 
@@ -14,9 +16,9 @@ import retrofit2.http.Path;
 public interface ClubService {
 
     @GET("/clubs")
-    Call<List<Club>> getClubs();
+    Call<ListClubs> getClubs();
 
     @GET("/clubs/{id}")
-    Call<Club> getClub(@Path("id") String id);
+    Call<ClubDetail> getClub(@Path("id") String id);
 
 }
