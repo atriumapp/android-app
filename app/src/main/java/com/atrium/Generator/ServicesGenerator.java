@@ -2,6 +2,9 @@ package com.atrium.generator;
 
 import android.util.Log;
 
+import com.bluelinelabs.logansquare.LoganSquare;
+import com.github.aurae.retrofit2.LoganSquareConverterFactory;
+
 import java.io.IOException;
 
 import okhttp3.Interceptor;
@@ -38,7 +41,10 @@ public class ServicesGenerator {
 
 
     public static <S> S createService(Class<S> serviceClass) {
-        Retrofit retrofit = builder.client(httpClient.build()).build();
+        Retrofit retrofit = builder
+                .client(httpClient.build())
+                .addConverterFactory(LoganSquareConverterFactory.create())
+                .build();
         return retrofit.create(serviceClass);
     }
 }
