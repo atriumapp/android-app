@@ -2,48 +2,55 @@ package com.atrium;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
-import com.atrium.event.pojo.Event;
-import com.atrium.event.service.EventService;
-import com.atrium.generator.ServicesGenerator;
-import com.atrium.club.pojo.Club;
+import com.atrium.club.adapter.ClubsViewAdapter;
+import com.atrium.club.pojo.ListClubs;
 import com.atrium.club.service.ClubService;
-import com.atrium.pojo.utils.PaginationResponse;
+import com.atrium.generator.ServicesGenerator;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
 public class MainActivity extends AppCompatActivity {
+
+    private StaggeredGridLayoutManager layoutManager;
+
+    @BindView(R.id.main_recycler_view)
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
-        EventService eventService = ServicesGenerator.createService(EventService.class);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
 
-        Map<String, String> options = new HashMap<String, String>();
-        options.put("club", "bda");
+        ClubService clubService = ServicesGenerator.createService(ClubService.class);
 
-        Call<PaginationResponse<Event>> request = eventService.findEventByClub(options);
+        Call<ListClubs> request = clubService.getClubs();
 
-        request.enqueue(new Callback<PaginationResponse<Event>>() {
+        request.enqueue(new Callback<ListClubs>() {
             @Override
-            public void onResponse(Call<PaginationResponse<Event>> call, Response<PaginationResponse<Event>> response) {
-                List<Event> test = response.body().getResults();
+            public void onResponse(Call<ListClubs> call, Response<ListClubs> response) {
+                ClubsViewAdapter adapter = new ClubsViewAdapter(response.body(), MainActivity.this);
+                recyclerView.setAdapter(adapter);
             }
 
             @Override
-            public void onFailure(Call<PaginationResponse<Event>> call, Throwable t) {
-                Log.e("Error request", "Error dureing request", t);
+            public void onFailure(Call<ListClubs> call, Throwable t) {
+
             }
         });
+
 
     }
 }
