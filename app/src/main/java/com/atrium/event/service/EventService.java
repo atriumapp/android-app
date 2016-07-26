@@ -21,6 +21,13 @@ public interface EventService {
     @GET("/api/events/{id}")
     Call<Event> findEventById(@Path("id") String id);
 
+    /**
+     *
+     * @param options
+     * Map d'option pour cette méthode si on veut récupérer les envent d'un club : "club":"bda"
+     * et pour les page : "page":"2"
+     * @return Une liste d'event avec une pagination
+     */
     @GET("/api/events")
     Call<PaginationResponse<Event>> findEventByClub(@QueryMap Map<String, String> options);
 

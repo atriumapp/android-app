@@ -1,6 +1,7 @@
 package com.atrium.news.service;
 
 import com.atrium.news.pojo.News;
+import com.atrium.pojo.utils.PaginationResponse;
 
 import java.util.Map;
 
@@ -16,11 +17,18 @@ import retrofit2.http.QueryMap;
 public interface NewsService {
 
     @GET("/news")
-    Call<Response<News>> getAllNews();
+    Call<PaginationResponse<News>> getAllNews();
 
     @GET("/news/{id}")
     Call<News> findNewsById(@Path("id") String id);
 
+    /**
+     *
+     * @param options
+     * Map d'option pour cette méthode si on veut récupérer les news d'un club : "club":"bda"
+     * et pour les page : "page":"2"
+     * @return Une liste de news avec une pagination
+     */
     @GET("/news")
-    Call<Response<News>> findNewsByClub(@QueryMap Map<String, String> options);
+    Call<PaginationResponse<News>> findNewsByClub(@QueryMap Map<String, String> options);
 }
