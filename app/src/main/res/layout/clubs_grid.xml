@@ -2,6 +2,7 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="100dp"
     android:layout_height="100dp"
+    android:padding="1dp"
     android:id="@+id/clubs_card_view">
 
     <RelativeLayout

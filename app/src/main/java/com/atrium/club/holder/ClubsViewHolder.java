@@ -16,18 +16,18 @@ import butterknife.ButterKnife;
 public class ClubsViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.clubs_card_view)
-    private View container;
+    View container;
 
     @BindView(R.id.clubs_image_view)
-    private ImageView image;
+    ImageView image;
 
     @BindView(R.id.clubs_name_view)
-    private TextView name;
+    TextView name;
 
     public ClubsViewHolder(View itemView) {
         super(itemView);
 
-        ButterKnife.bind(itemView);
+        ButterKnife.bind(this, itemView);
     }
 
     public View getContainer() {

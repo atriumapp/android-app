@@ -30,14 +30,17 @@ public class ClubsViewAdapter extends RecyclerView.Adapter<ClubsViewHolder> {
 
     @Override
     public ClubsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.clubs_grid, null, false);
+        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.clubs_grid, parent, false);
         return new ClubsViewHolder(layoutView);
     }
 
     @Override
     public void onBindViewHolder(ClubsViewHolder holder, int position) {
-        new DownloadImageTask(holder.getImage()).execute(clubs.get(position).getLogo());
-        holder.getName().setText(clubs.get(position).getName());
+        Club club = clubs.get(position);
+        if(club.getLogo() != null){
+            new DownloadImageTask(holder.getImage()).execute(club.getLogo());
+        }
+        holder.getName().setText(club.getName());
 
         holder.getContainer().setOnClickListener(new ClubsOnClickListener(clubs.get(position)));
     }
@@ -45,5 +48,9 @@ public class ClubsViewAdapter extends RecyclerView.Adapter<ClubsViewHolder> {
     @Override
     public int getItemCount() {
         return clubs.size();
+    }
+
+    public void setClubs(ListClubs clubs) {
+        this.clubs = clubs;
     }
 }
