@@ -48,6 +48,8 @@ dependencies {
      */
     compile 'com.android.support:cardview-v7:24.0.+'
     compile 'com.android.support:recyclerview-v7:24.0.+'
+    //image rezise
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }
 
 buildscript {

@@ -12,6 +12,7 @@ import com.atrium.club.holder.ClubsViewHolder;
 import com.atrium.club.listener.ClubsOnClickListener;
 import com.atrium.club.pojo.Club;
 import com.atrium.club.pojo.ListClubs;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -38,7 +39,10 @@ public class ClubsViewAdapter extends RecyclerView.Adapter<ClubsViewHolder> {
     public void onBindViewHolder(ClubsViewHolder holder, int position) {
         Club club = clubs.get(position);
         if(club.getLogo() != null){
-            new DownloadImageTask(holder.getImage()).execute(club.getLogo());
+            Picasso.with(context)
+                    .load(club.getLogo())
+                    .resizeDimen(R.dimen.clubs_image_view_width, R.dimen.clubs_images_view_height)
+                    .into(holder.getImage());
         }
         holder.getName().setText(club.getName());
 

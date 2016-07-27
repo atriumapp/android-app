@@ -2,4 +2,10 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="card_view_elevation">5sp</dimen>
+    <dimen name="clubs_card_view_width">85dp</dimen>
+    <dimen name="club_card_view_height">140dp</dimen>
+    <dimen name="clubs_card_view_elevation">@dimen/card_view_elevation</dimen>
+    <dimen name="clubs_image_view_width">@dimen/clubs_card_view_width</dimen>
+    <dimen name="clubs_images_view_height">80dp</dimen>
 </resources>
