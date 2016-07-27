@@ -15,10 +15,10 @@ import retrofit2.http.Path;
  */
 public interface ClubService {
 
-    @GET("/clubs")
+    @GET("api/clubs")
     Call<ListClubs> getClubs();
 
-    @GET("/clubs/{id}")
+    @GET("api//clubs/{id}")
     Call<ClubDetail> getClub(@Path("id") String id);
 
 }
