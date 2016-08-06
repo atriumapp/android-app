@@ -8,9 +8,11 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import com.atrium.club.adapter.ClubsViewAdapter;
+import com.atrium.club.module.ClubModule;
 import com.atrium.club.pojo.ListClubs;
 import com.atrium.club.service.ClubService;
-import com.atrium.generator.ServicesGenerator;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,9 +21,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class MainActivity extends AppCompatActivity {
+public class ClubsActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity(all clubs)";
+    private static final String TAG = "ClubsActivity";
 
     private StaggeredGridLayoutManager layoutManager;
 
@@ -34,11 +36,16 @@ public class MainActivity extends AppCompatActivity {
     private ListClubs clubs = new ListClubs();
     private ClubsViewAdapter adapter;
 
+    @Inject
+    ClubService clubApi;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_clubs);
         ButterKnife.bind(this);
+
+        ((MyApplication) getApplication()).getClubComponent().inject(this);
 
         this.toolbar.setTitle(this.getString(R.string.main_toobar_title));
         setSupportActionBar(this.toolbar);
@@ -46,17 +53,16 @@ public class MainActivity extends AppCompatActivity {
         this.recyclerView.setHasFixedSize(true);
         this.layoutManager = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL);
         this.recyclerView.setLayoutManager(this.layoutManager);
-        this.adapter = new ClubsViewAdapter(this.clubs, MainActivity.this);
+        this.adapter = new ClubsViewAdapter(this.clubs, ClubsActivity.this);
         this.recyclerView.setAdapter(this.adapter);
 
-        ClubService clubService = ServicesGenerator.createService(ClubService.class);
 
-        final Call<ListClubs> request = clubService.getClubs();
+        final Call<ListClubs> request = clubApi.getClubs();
 
         request.enqueue(new Callback<ListClubs>() {
             @Override
             public void onResponse(Call<ListClubs> call, Response<ListClubs> response) {
-                recyclerView.setAdapter(new ClubsViewAdapter(response.body(), MainActivity.this));
+                recyclerView.setAdapter(new ClubsViewAdapter(response.body(), ClubsActivity.this));
             }
 
             @Override

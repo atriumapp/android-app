@@ -4,7 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="card_view_elevation">5sp</dimen>
 
-    <!-- MainActivity-->
+    <!-- ClubsActivity-->
     <dimen name="clubs_card_view_width">85dp</dimen>
     <dimen name="clubs_card_view_height">140dp</dimen>
     <dimen name="clubs_card_view_marginBottom">8dp</dimen>
