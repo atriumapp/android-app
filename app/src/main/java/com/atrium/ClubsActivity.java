@@ -19,9 +19,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class MainActivity extends AppCompatActivity {
+public class ClubsActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity(all clubs)";
+    private static final String TAG = "ClubsActivity";
 
     private StaggeredGridLayoutManager layoutManager;
 
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_clubs);
         ButterKnife.bind(this);
 
         this.toolbar.setTitle(this.getString(R.string.main_toobar_title));
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         this.recyclerView.setHasFixedSize(true);
         this.layoutManager = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL);
         this.recyclerView.setLayoutManager(this.layoutManager);
-        this.adapter = new ClubsViewAdapter(this.clubs, MainActivity.this);
+        this.adapter = new ClubsViewAdapter(this.clubs, ClubsActivity.this);
         this.recyclerView.setAdapter(this.adapter);
 
         ClubService clubService = ServicesGenerator.createService(ClubService.class);
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         request.enqueue(new Callback<ListClubs>() {
             @Override
             public void onResponse(Call<ListClubs> call, Response<ListClubs> response) {
-                recyclerView.setAdapter(new ClubsViewAdapter(response.body(), MainActivity.this));
+                recyclerView.setAdapter(new ClubsViewAdapter(response.body(), ClubsActivity.this));
             }
 
             @Override
