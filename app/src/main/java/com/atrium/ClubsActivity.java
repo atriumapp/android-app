@@ -8,9 +8,11 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import com.atrium.club.adapter.ClubsViewAdapter;
+import com.atrium.club.module.ClubModule;
 import com.atrium.club.pojo.ListClubs;
 import com.atrium.club.service.ClubService;
-import com.atrium.generator.ServicesGenerator;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,11 +36,16 @@ public class ClubsActivity extends AppCompatActivity {
     private ListClubs clubs = new ListClubs();
     private ClubsViewAdapter adapter;
 
+    @Inject
+    ClubService clubApi;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clubs);
         ButterKnife.bind(this);
+
+        ((MyApplication) getApplication()).getClubComponent().inject(this);
 
         this.toolbar.setTitle(this.getString(R.string.main_toobar_title));
         setSupportActionBar(this.toolbar);
@@ -49,9 +56,8 @@ public class ClubsActivity extends AppCompatActivity {
         this.adapter = new ClubsViewAdapter(this.clubs, ClubsActivity.this);
         this.recyclerView.setAdapter(this.adapter);
 
-        ClubService clubService = ServicesGenerator.createService(ClubService.class);
 
-        final Call<ListClubs> request = clubService.getClubs();
+        final Call<ListClubs> request = clubApi.getClubs();
 
         request.enqueue(new Callback<ListClubs>() {
             @Override

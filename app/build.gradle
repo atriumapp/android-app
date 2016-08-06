@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.atrium"
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
@@ -25,6 +25,11 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.0.0'
+
+    //Annoation injection
+    compile 'com.google.dagger:dagger:2.6'
+    apt 'com.google.dagger:dagger-compiler:2.6'
+    provided 'javax.annotation:jsr250-api:1.0'
 
     //Rest : https://github.com/square/retrofit
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
