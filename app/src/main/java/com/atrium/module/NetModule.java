@@ -16,6 +16,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by romain on 06/08/2016.
@@ -72,6 +73,7 @@ public class NetModule {
     @Singleton
     Retrofit provideRetrofit(OkHttpClient client){
         Retrofit retrofit = new Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(baseUrl)
                 .client(client)
                 .build();

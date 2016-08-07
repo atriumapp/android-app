@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import com.atrium.club.module.ClubModule;
 import com.atrium.club.scope.ClubScope;
+import com.atrium.club.service.ClubService;
 import com.atrium.component.NetComponent;
 
 import javax.inject.Singleton;
@@ -16,5 +17,7 @@ import dagger.Component;
 @ClubScope
 @Component(dependencies = NetComponent.class, modules = ClubModule.class)
 public interface ClubComponent {
-    void inject(Activity activity);
+    //void inject(Activity activity);
+
+    ClubService clubService();
 }

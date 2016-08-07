@@ -1,8 +1,10 @@
 package com.atrium.club.listener;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 
+import com.atrium.ClubDetailActivity;
 import com.atrium.club.pojo.Club;
 
 /**
@@ -19,5 +21,7 @@ public class ClubsOnClickListener implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         Toast.makeText(view.getContext(), "Club cliked " + club.getName(), Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(view.getContext(), ClubDetailActivity.class);
+        view.getContext().startActivity(intent);
     }
 }

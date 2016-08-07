@@ -1,5 +1,6 @@
 package com.atrium;
 
+import android.app.Application;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -45,7 +46,8 @@ public class ClubsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_clubs);
         ButterKnife.bind(this);
 
-        ((MyApplication) getApplication()).getClubComponent().inject(this);
+        //((MyApplication) getApplication()).getClubComponent().inject(this);
+        clubApi = ((MyApplication) getApplication()).getClubComponent().clubService();
 
         this.toolbar.setTitle(this.getString(R.string.main_toobar_title));
         setSupportActionBar(this.toolbar);
