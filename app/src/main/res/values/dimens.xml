@@ -12,4 +12,7 @@
     <dimen name="clubs_image_view_width">@dimen/clubs_card_view_width</dimen>
     <dimen name="clubs_images_view_height">80dp</dimen>
     <dimen name="clubs_text_view_size">10sp</dimen>
+
+    <!-- ClubDetailActivity -->
+    <dimen name="club_detail_information_image">200dp</dimen>
 </resources>

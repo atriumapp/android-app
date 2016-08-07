@@ -18,7 +18,7 @@ public interface ClubService {
     @GET("api/clubs")
     Call<ListClubs> getClubs();
 
-    @GET("api//clubs/{id}")
+    @GET("api/clubs/{id}")
     Call<ClubDetail> getClub(@Path("id") String id);
 
 }

@@ -22,6 +22,7 @@ public class ClubsOnClickListener implements View.OnClickListener {
     public void onClick(View view) {
         Toast.makeText(view.getContext(), "Club cliked " + club.getName(), Toast.LENGTH_LONG).show();
         Intent intent = new Intent(view.getContext(), ClubDetailActivity.class);
+        intent.putExtra(ClubDetailActivity.CLUB_SLUG, club.getSlug());
         view.getContext().startActivity(intent);
     }
 }
