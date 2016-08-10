@@ -15,4 +15,8 @@
 
     <!-- ClubDetailActivity -->
     <dimen name="club_detail_information_image">200dp</dimen>
+
+    <!-- EventGrid -->
+    <dimen name="event_grid_image_width">130dp</dimen>
+    <dimen name="event_grid_title_textSize">20dp</dimen>
 </resources>

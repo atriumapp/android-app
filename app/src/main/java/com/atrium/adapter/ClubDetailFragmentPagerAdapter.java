@@ -5,16 +5,18 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.PagerAdapter;
 
 import com.atrium.ClubDetailActivity;
-import com.atrium.fragment.ClubDetailEventFragement;
+import com.atrium.fragment.ClubDetailEventsFragement;
 import com.atrium.fragment.ClubDetailInformationFragment;
 import com.atrium.fragment.ClubDetailNewsFragement;
 
 /**
  * Created by romain on 07/08/2016.
  */
-public class ClubDetailFragmentPagerAdapter extends FragmentPagerAdapter {
+public class ClubDetailFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
     final int PAGE_COUNT = 3;
     private String tabTitles[] = new String[] { "Information", "Evénement", "News" };
@@ -35,7 +37,7 @@ public class ClubDetailFragmentPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return ClubDetailInformationFragment.newInstance(args);
             case 1:
-                return ClubDetailEventFragement.newInstance(args);
+                return ClubDetailEventsFragement.newInstance(args);
             case 2:
                 return ClubDetailNewsFragement.newInstance(args);
             default:
@@ -52,4 +54,5 @@ public class ClubDetailFragmentPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         return tabTitles[position];
     }
+
 }
