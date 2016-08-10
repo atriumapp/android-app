@@ -16,7 +16,7 @@ import retrofit2.http.QueryMap;
 public interface EventService {
 
     @GET("/api/events")
-    Call<PaginationResponse<Event>> getAllEvents();
+    Call<PaginationResponse<Event>> getAllEvents(@QueryMap Map<String, String> options);
 
     @GET("/api/events/{id}")
     Call<Event> findEventById(@Path("id") String id);

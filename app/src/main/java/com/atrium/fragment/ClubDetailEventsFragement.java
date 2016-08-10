@@ -18,6 +18,7 @@ import com.atrium.R;
 import com.atrium.event.adapter.EventsAdapter;
 import com.atrium.event.pojo.Event;
 import com.atrium.event.service.EventService;
+import com.atrium.listener.EndlessRecyclerViewScrollListener;
 import com.atrium.pojo.utils.PaginationResponse;
 
 import java.util.LinkedHashMap;
@@ -74,9 +75,35 @@ public class ClubDetailEventsFragement extends Fragment {
         eventService = ((MyApplication) getActivity().getApplication()).getEventComponent().eventService();
 
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
         adapter = new EventsAdapter(events, getContext());
         recyclerView.setAdapter(adapter);
+        recyclerView.addOnScrollListener(new EndlessRecyclerViewScrollListener(layoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount) {
+                if(events.getPages() == 1 || page > events.getPages()){
+                    return;
+                }
+                LinkedHashMap<String, String> options = new LinkedHashMap<String, String>();
+                options.put("club", clubId);
+                options.put("page", String.valueOf(page));
+                final Call<PaginationResponse<Event>> requestMore = eventService.findEventByClub(options);
+
+                requestMore.enqueue(new Callback<PaginationResponse<Event>>() {
+                    @Override
+                    public void onResponse(Call<PaginationResponse<Event>> call, Response<PaginationResponse<Event>> response) {
+                        PaginationResponse<Event> moreResult = response.body();
+                        adapter.updateEventsPagination(moreResult);
+                    }
+
+                    @Override
+                    public void onFailure(Call<PaginationResponse<Event>> call, Throwable t) {
+                        Log.e(TAG, "Request more fail", t);
+                    }
+                });
+            }
+        });
 
         Bundle args = getArguments();
         this.clubId = args.getString(ClubDetailActivity.CLUB_SLUG);

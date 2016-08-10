@@ -57,4 +57,12 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsViewHolder> {
         }
     }
 
+    public void updateEventsPagination(PaginationResponse<Event> moreResult){
+        events.setNext_page(moreResult.getNext_page());
+        events.setPrevious_page(moreResult.getPrevious_page());
+        int curSize = this.getItemCount();
+        events.addResult(moreResult.getResults());
+        this.notifyItemRangeChanged(curSize, events.getResults().size() - 1);
+    }
+
 }
