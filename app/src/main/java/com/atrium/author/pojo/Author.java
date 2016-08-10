@@ -102,4 +102,8 @@ public class Author {
     public void setUser(String user) {
         this.user = user;
     }
+
+    public String getName(){
+        return String.format("%s %s", this.last_name, this.first_name);
+    }
 }

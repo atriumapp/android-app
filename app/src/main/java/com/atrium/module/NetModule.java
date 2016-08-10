@@ -4,6 +4,9 @@ import android.app.Application;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.io.IOException;
 
 import javax.inject.Singleton;
@@ -71,9 +74,17 @@ public class NetModule {
 
     @Provides
     @Singleton
-    Retrofit provideRetrofit(OkHttpClient client){
+    Gson provideGson(){
+        return new GsonBuilder()
+                .setDateFormat("yyyy-mm-dd HH:mm:ssZ")
+                .create();
+    }
+
+    @Provides
+    @Singleton
+    Retrofit provideRetrofit(OkHttpClient client, Gson gson){
         Retrofit retrofit = new Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .baseUrl(baseUrl)
                 .client(client)
                 .build();

@@ -12,7 +12,7 @@ public class News {
     private Author author = null;
     private String club = null;
     private String content = null;
-    private Date date = null;
+    private String date = null;
     private Boolean draft = null;
     private String headline = null;
     private String id = null;
@@ -22,7 +22,7 @@ public class News {
     public News() {
     }
 
-    public News(Author author, String club, String content, Date date, Boolean draft, String headline, String id, List<Media> medias, String name) {
+    public News(Author author, String club, String content, String date, Boolean draft, String headline, String id, List<Media> medias, String name) {
         this.author = author;
         this.club = club;
         this.content = content;
@@ -58,11 +58,11 @@ public class News {
         this.content = content;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
