@@ -6,15 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.atrium.AsyncTask.DownloadImageTask;
 import com.atrium.R;
-import com.atrium.club.holder.ClubsViewHolder;
-import com.atrium.club.listener.ClubsOnClickListener;
-import com.atrium.club.pojo.Club;
-import com.atrium.club.pojo.ListClubs;
+import com.atrium.holder.ClubsViewHolder;
+import com.atrium.listener.ClubsOnClickListener;
+import com.atrium.model.Club;
+import com.atrium.model.ListClubs;
 import com.squareup.picasso.Picasso;
-
-import java.util.List;
 
 /**
  * Created by A613792 on 26/07/2016.

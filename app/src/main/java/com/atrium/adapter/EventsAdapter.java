@@ -7,10 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.atrium.R;
-import com.atrium.event.holder.EventsViewHolder;
-import com.atrium.event.listener.ChoiceEventListener;
-import com.atrium.event.pojo.Event;
-import com.atrium.pojo.utils.PaginationResponse;
+import com.atrium.holder.EventsViewHolder;
+import com.atrium.listener.ChoiceEventListener;
+import com.atrium.model.Event;
+import com.atrium.model.PaginationResponse;
 import com.squareup.picasso.Picasso;
 
 /**

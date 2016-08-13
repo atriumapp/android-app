@@ -7,10 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.atrium.R;
-import com.atrium.news.holder.NewsViewHolder;
-import com.atrium.news.listener.ChoiceNewsListener;
-import com.atrium.news.pojo.News;
-import com.atrium.pojo.utils.PaginationResponse;
+import com.atrium.holder.NewsViewHolder;
+import com.atrium.listener.ChoiceNewsListener;
+import com.atrium.model.News;
+import com.atrium.model.PaginationResponse;
 
 /**
  * Created by romain on 10/08/2016.
