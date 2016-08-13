@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.atrium.R;
 import com.atrium.news.holder.NewsViewHolder;
+import com.atrium.news.listener.ChoiceNewsListener;
 import com.atrium.news.pojo.News;
 import com.atrium.pojo.utils.PaginationResponse;
 
@@ -35,6 +36,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsViewHolder> {
         News currentNews = news.getResults().get(position);
         holder.getTitle().setText(currentNews.getHeadline());
         holder.getAuthor().setText(currentNews.getAuthor().getName());
+        holder.getContainer().setOnClickListener(new ChoiceNewsListener(currentNews));
     }
 
     @Override

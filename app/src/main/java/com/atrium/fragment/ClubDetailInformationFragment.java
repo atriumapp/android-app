@@ -18,6 +18,9 @@ import com.atrium.club.pojo.ClubDetail;
 import com.atrium.club.service.ClubService;
 import com.squareup.picasso.Picasso;
 
+import org.sufficientlysecure.htmltextview.HtmlRemoteImageGetter;
+import org.sufficientlysecure.htmltextview.HtmlTextView;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -40,7 +43,7 @@ public class ClubDetailInformationFragment extends Fragment {
     ImageView imageView;
 
     @BindView(R.id.club_detail_information_textView)
-    TextView textView;
+    HtmlTextView textView;
 
     public ClubDetailInformationFragment() {
         // Required empty public constructor
@@ -74,7 +77,7 @@ public class ClubDetailInformationFragment extends Fragment {
                         .load(detail.getLogo())
                         .resizeDimen(R.dimen.club_detail_information_image, R.dimen.club_detail_information_image)
                         .into(imageView);
-                textView.setText(Html.fromHtml(detail.getDescription()));
+                textView.setHtml(detail.getDescription(), new HtmlRemoteImageGetter(textView));
             }
 
             @Override

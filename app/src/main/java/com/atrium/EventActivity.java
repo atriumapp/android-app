@@ -11,6 +11,9 @@ import com.atrium.event.pojo.Event;
 import com.atrium.event.service.EventService;
 import com.squareup.picasso.Picasso;
 
+import org.sufficientlysecure.htmltextview.HtmlRemoteImageGetter;
+import org.sufficientlysecure.htmltextview.HtmlTextView;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
@@ -19,7 +22,7 @@ import retrofit2.Response;
 
 public class EventActivity extends AppCompatActivity {
 
-    public static String EVENT_KEY = "event";
+    public static String EVENT_KEY = "EVENT";
     private static String TAG = EventActivity.class.getName();
 
     private String eventId;
@@ -35,7 +38,7 @@ public class EventActivity extends AppCompatActivity {
     TextView time;
 
     @BindView(R.id.tv_event_descriptoion)
-    TextView desciption;
+    HtmlTextView desciption;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +63,7 @@ public class EventActivity extends AppCompatActivity {
                 }
                 title.setText(event.getName());
                 time.setText(event.getStart_date());
-                desciption.setText(Html.fromHtml(event.getDescription()));
+                desciption.setHtml(event.getDescription(), new HtmlRemoteImageGetter(desciption));
             }
 
             @Override
