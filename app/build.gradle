@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     compileSdkVersion 24
@@ -6,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.atrium"
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
@@ -19,8 +20,53 @@ android {
     }
 }
 
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.0.0'
+
+    //Annoation injection
+    compile 'com.google.dagger:dagger:2.6'
+    apt 'com.google.dagger:dagger-compiler:2.6'
+    provided 'javax.annotation:jsr250-api:1.0'
+
+    //Rest : https://github.com/square/retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
+
+    //Json converter https://github.com/aurae/retrofit-logansquare
+    apt 'com.bluelinelabs:logansquare-compiler:1.3.6'
+    compile 'com.bluelinelabs:logansquare:1.3.6'
+    compile 'com.github.aurae.retrofit2:converter-logansquare:1.4.1'
+
+    //butter Knife : https://github.com/JakeWharton/butterknife
+    compile 'com.jakewharton:butterknife:8.2.1'
+    apt 'com.jakewharton:butterknife-compiler:8.2.1'
+    
+    //bottom toolbar : https://github.com/aurelhubert/ahbottomnavigation
+    compile 'com.aurelhubert:ahbottomnavigation:1.3.3'
+
+    /*
+    Style
+     */
+    compile 'com.android.support:cardview-v7:24.0.+'
+    compile 'com.android.support:recyclerview-v7:24.0.+'
+    compile "com.android.support:design:24.0.+"
+    //image rezise
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    //Autofit TextView
+    compile 'me.grantland:autofittextview:0.2.+'
+    //html textview
+    compile 'org.sufficientlysecure:html-textview:1.8'
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+    }
 }
