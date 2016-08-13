@@ -52,4 +52,8 @@ public class PaginationResponse<T> {
     public void setResults(List<T> results) {
         this.results = results;
     }
+
+    public void addResult(List<T> newResult){
+        this.results.addAll(newResult);
+    }
 }

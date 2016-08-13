@@ -14,6 +14,7 @@ public class Event {
     private Place place = null;
     private String poster = null;
     private String start_date = null;
+    private String id = null;
 
     public Event() {
     }
@@ -91,5 +92,13 @@ public class Event {
 
     public void setStart_date(String start_date) {
         this.start_date = start_date;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

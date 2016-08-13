@@ -5,6 +5,7 @@ import android.app.Activity;
 import com.atrium.component.NetComponent;
 import com.atrium.event.scope.EventScope;
 import com.atrium.news.NewsModule;
+import com.atrium.news.service.NewsService;
 
 import dagger.Component;
 
@@ -15,5 +16,5 @@ import dagger.Component;
 @Component(dependencies = NetComponent.class, modules = NewsModule.class)
 public interface NewsComponent {
 
-    void inject(Activity activity);
+    NewsService newsService();
 }

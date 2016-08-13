@@ -1,0 +1,26 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.atrium.fragment.ClubDetailInformationFragment"
+    android:background="@color/clubs_background">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/club_detail_information_imageView"
+        android:layout_centerHorizontal="true" />
+    <org.sufficientlysecure.htmltextview.HtmlTextView
+        android:id="@+id/club_detail_information_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/club_detail_information_imageView"
+        android:layout_marginTop="50dp"/>
+    </RelativeLayout>
+</ScrollView>
+

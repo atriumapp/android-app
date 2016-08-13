@@ -16,10 +16,10 @@ import retrofit2.http.QueryMap;
  */
 public interface NewsService {
 
-    @GET("/news")
+    @GET("/api/news")
     Call<PaginationResponse<News>> getAllNews();
 
-    @GET("/news/{id}")
+    @GET("/api/news/{id}")
     Call<News> findNewsById(@Path("id") String id);
 
     /**
@@ -29,6 +29,6 @@ public interface NewsService {
      * et pour les page : "page":"2"
      * @return Une liste de news avec une pagination
      */
-    @GET("/news")
+    @GET("/api/news")
     Call<PaginationResponse<News>> findNewsByClub(@QueryMap Map<String, String> options);
 }

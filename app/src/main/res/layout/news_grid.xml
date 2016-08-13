@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/news_grid_cardView"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginBottom="10dp"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <me.grantland.widget.AutofitTextView
+            android:id="@+id/news_grid_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/event_grid_image_width"
+            android:singleLine="true"
+            android:text="Event Title"
+            android:textSize="40sp"
+            app:minTextSize="16sp" />
+
+        <TextView
+            android:id="@+id/news_grid_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/news_grid_title"
+            android:text="Place" />
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
