@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.atrium.R;
 import com.atrium.event.holder.EventsViewHolder;
+import com.atrium.event.listener.ChoiceEventListener;
 import com.atrium.event.pojo.Event;
 import com.atrium.pojo.utils.PaginationResponse;
 import com.squareup.picasso.Picasso;
@@ -41,6 +42,8 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsViewHolder> {
         }
         holder.getTitle().setText(event.getName());
         holder.getPlace().setText(event.getPlace().getName());
+
+        holder.getContainer().setOnClickListener(new ChoiceEventListener(event));
 
     }
 
