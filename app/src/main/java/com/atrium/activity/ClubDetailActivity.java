@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.atrium.R;
-import com.atrium.adapter.ClubDetailFragmentPagerAdapter;
+import com.atrium.adapter.FragmentPagerAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,7 +32,7 @@ public class ClubDetailActivity extends AppCompatActivity {
         this.clubNeeded = getIntent().getStringExtra(this.CLUB_SLUG);
 
         this.viewPager.setCurrentItem(0);
-        this.viewPager.setAdapter(new ClubDetailFragmentPagerAdapter(getSupportFragmentManager(), ClubDetailActivity.this, clubNeeded));
+        this.viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager(), ClubDetailActivity.this, clubNeeded));
         this.tabLayout.setupWithViewPager(this.viewPager);
     }
 }

@@ -9,11 +9,11 @@ import com.atrium.model.Club;
 /**
  * Created by A613792 on 26/07/2016.
  */
-public class ClubsOnClickListener implements View.OnClickListener {
+public class ChoiceClubsListener implements View.OnClickListener {
 
     Club club;
 
-    public ClubsOnClickListener(Club club) {
+    public ChoiceClubsListener(Club club) {
         this.club = club;
     }
 

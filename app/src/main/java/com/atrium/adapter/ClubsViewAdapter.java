@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.atrium.R;
 import com.atrium.holder.ClubsViewHolder;
-import com.atrium.listener.ClubsOnClickListener;
+import com.atrium.listener.ChoiceClubsListener;
 import com.atrium.model.Club;
 import com.atrium.model.ListClubs;
 import com.squareup.picasso.Picasso;
@@ -28,7 +28,7 @@ public class ClubsViewAdapter extends RecyclerView.Adapter<ClubsViewHolder> {
 
     @Override
     public ClubsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.clubs_grid, parent, false);
+        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.clubs_item, parent, false);
         return new ClubsViewHolder(layoutView);
     }
 
@@ -43,7 +43,7 @@ public class ClubsViewAdapter extends RecyclerView.Adapter<ClubsViewHolder> {
         }
         holder.getName().setText(club.getName());
 
-        holder.getContainer().setOnClickListener(new ClubsOnClickListener(clubs.get(position)));
+        holder.getContainer().setOnClickListener(new ChoiceClubsListener(clubs.get(position)));
     }
 
     @Override

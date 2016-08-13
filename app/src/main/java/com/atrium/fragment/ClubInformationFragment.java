@@ -28,7 +28,7 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ClubDetailInformationFragment extends Fragment {
+public class ClubInformationFragment extends Fragment {
 
 
     private Unbinder unbinder;
@@ -42,12 +42,12 @@ public class ClubDetailInformationFragment extends Fragment {
     @BindView(R.id.club_detail_information_textView)
     HtmlTextView textView;
 
-    public ClubDetailInformationFragment() {
+    public ClubInformationFragment() {
         // Required empty public constructor
     }
 
-    public static ClubDetailInformationFragment newInstance(Bundle bundle) {
-        ClubDetailInformationFragment fragment = new ClubDetailInformationFragment();
+    public static ClubInformationFragment newInstance(Bundle bundle) {
+        ClubInformationFragment fragment = new ClubInformationFragment();
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -56,7 +56,7 @@ public class ClubDetailInformationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_club_detail_information, container, false);
+        View view = inflater.inflate(R.layout.club_information_fragment, container, false);
         ButterKnife.bind(this, view);
 
         Bundle args = getArguments();

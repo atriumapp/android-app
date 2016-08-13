@@ -7,21 +7,21 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.atrium.activity.ClubDetailActivity;
-import com.atrium.fragment.ClubDetailEventsFragement;
-import com.atrium.fragment.ClubDetailInformationFragment;
-import com.atrium.fragment.ClubDetailNewsFragement;
+import com.atrium.fragment.ClubEventsFragement;
+import com.atrium.fragment.ClubInformationFragment;
+import com.atrium.fragment.ClubNewsFragement;
 
 /**
  * Created by romain on 07/08/2016.
  */
-public class ClubDetailFragmentPagerAdapter extends FragmentStatePagerAdapter {
+public class FragmentPagerAdapter extends FragmentStatePagerAdapter {
 
     final int PAGE_COUNT = 3;
     private String tabTitles[] = new String[] { "Information", "Evénement", "News" };
     private Context context;
     private String clubId;
 
-    public ClubDetailFragmentPagerAdapter(FragmentManager fm, Context context, String clubId) {
+    public FragmentPagerAdapter(FragmentManager fm, Context context, String clubId) {
         super(fm);
         this.context = context;
         this.clubId = clubId;
@@ -33,11 +33,11 @@ public class ClubDetailFragmentPagerAdapter extends FragmentStatePagerAdapter {
         args.putString(ClubDetailActivity.CLUB_SLUG, clubId);
         switch (position){
             case 0:
-                return ClubDetailInformationFragment.newInstance(args);
+                return ClubInformationFragment.newInstance(args);
             case 1:
-                return ClubDetailEventsFragement.newInstance(args);
+                return ClubEventsFragement.newInstance(args);
             case 2:
-                return ClubDetailNewsFragement.newInstance(args);
+                return ClubNewsFragement.newInstance(args);
             default:
                 return null;
         }
