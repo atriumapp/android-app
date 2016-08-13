@@ -10,20 +10,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.atrium.ClubDetailActivity;
+import com.atrium.activity.ClubDetailActivity;
 import com.atrium.MyApplication;
 import com.atrium.R;
 import com.atrium.listener.EndlessRecyclerViewScrollListener;
-import com.atrium.news.adapter.NewsAdapter;
-import com.atrium.news.pojo.News;
-import com.atrium.news.service.NewsService;
-import com.atrium.pojo.utils.PaginationResponse;
+import com.atrium.adapter.NewsAdapter;
+import com.atrium.model.News;
+import com.atrium.service.NewsService;
+import com.atrium.model.PaginationResponse;
 
 import java.util.LinkedHashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

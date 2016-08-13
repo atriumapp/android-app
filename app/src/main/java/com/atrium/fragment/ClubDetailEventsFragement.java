@@ -6,26 +6,24 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.atrium.ClubDetailActivity;
+import com.atrium.activity.ClubDetailActivity;
 import com.atrium.MyApplication;
 import com.atrium.R;
-import com.atrium.event.adapter.EventsAdapter;
-import com.atrium.event.pojo.Event;
-import com.atrium.event.service.EventService;
+import com.atrium.adapter.EventsAdapter;
+import com.atrium.model.Event;
+import com.atrium.service.EventService;
 import com.atrium.listener.EndlessRecyclerViewScrollListener;
-import com.atrium.pojo.utils.PaginationResponse;
+import com.atrium.model.PaginationResponse;
 
 import java.util.LinkedHashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

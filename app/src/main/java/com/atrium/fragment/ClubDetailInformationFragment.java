@@ -2,20 +2,17 @@ package com.atrium.fragment;
 
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.atrium.ClubDetailActivity;
+import com.atrium.activity.ClubDetailActivity;
 import com.atrium.MyApplication;
 import com.atrium.R;
-import com.atrium.club.pojo.ClubDetail;
-import com.atrium.club.service.ClubService;
+import com.atrium.model.ClubDetail;
+import com.atrium.service.ClubService;
 import com.squareup.picasso.Picasso;
 
 import org.sufficientlysecure.htmltextview.HtmlRemoteImageGetter;

@@ -4,11 +4,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.PagerAdapter;
 
-import com.atrium.ClubDetailActivity;
+import com.atrium.activity.ClubDetailActivity;
 import com.atrium.fragment.ClubDetailEventsFragement;
 import com.atrium.fragment.ClubDetailInformationFragment;
 import com.atrium.fragment.ClubDetailNewsFragement;
