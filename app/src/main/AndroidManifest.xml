@@ -19,9 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ClubDetailActivity" />
-        <activity android:name=".EventActivity" />
-        <activity android:name=".NewsActivity"></activity>
+        <activity android:name=".activity.ClubDetailActivity" />
+        <activity android:name=".activity.EventActivity" />
+        <activity android:name=".activity.NewsActivity"></activity>
     </application>
 
 </manifest>

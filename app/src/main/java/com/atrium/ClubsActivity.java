@@ -1,6 +1,5 @@
 package com.atrium;
 
-import android.app.Application;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -8,12 +7,9 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
-import com.atrium.club.adapter.ClubsViewAdapter;
-import com.atrium.club.module.ClubModule;
-import com.atrium.club.pojo.ListClubs;
-import com.atrium.club.service.ClubService;
-
-import javax.inject.Inject;
+import com.atrium.adapter.ClubsViewAdapter;
+import com.atrium.model.ListClubs;
+import com.atrium.service.ClubService;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

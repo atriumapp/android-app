@@ -2,19 +2,19 @@ package com.atrium;
 
 import android.app.Application;
 
-import com.atrium.club.component.ClubComponent;
-import com.atrium.club.component.DaggerClubComponent;
-import com.atrium.club.module.ClubModule;
+import com.atrium.component.ClubComponent;
+import com.atrium.component.DaggerClubComponent;
+import com.atrium.component.DaggerEventComponent;
 import com.atrium.component.DaggerNetComponent;
+import com.atrium.component.DaggerNewsComponent;
+import com.atrium.component.EventComponent;
 import com.atrium.component.NetComponent;
-import com.atrium.event.component.DaggerEventComponent;
-import com.atrium.event.component.EventComponent;
-import com.atrium.event.module.EventModule;
+import com.atrium.component.NewsComponent;
 import com.atrium.module.ApplicationModule;
+import com.atrium.module.ClubModule;
+import com.atrium.module.EventModule;
 import com.atrium.module.NetModule;
-import com.atrium.news.NewsModule;
-import com.atrium.news.component.DaggerNewsComponent;
-import com.atrium.news.component.NewsComponent;
+import com.atrium.module.NewsModule;
 
 /**
  * Created by romain on 06/08/2016.
