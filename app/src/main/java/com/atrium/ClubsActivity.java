@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 
 import com.atrium.adapter.ClubsViewAdapter;
 import com.atrium.model.ListClubs;
@@ -66,4 +67,8 @@ public class ClubsActivity extends AppCompatActivity {
 
 
     }
+    public void forceCrash(View view) {
+        throw new RuntimeException("This is a crash");
+    }
+
 }

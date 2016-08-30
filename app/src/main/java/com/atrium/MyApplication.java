@@ -15,6 +15,8 @@ import com.atrium.module.ClubModule;
 import com.atrium.module.EventModule;
 import com.atrium.module.NetModule;
 import com.atrium.module.NewsModule;
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by romain on 06/08/2016.
@@ -29,6 +31,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
 
         netComponent = DaggerNetComponent.builder()
                 .applicationModule(new ApplicationModule(this))
