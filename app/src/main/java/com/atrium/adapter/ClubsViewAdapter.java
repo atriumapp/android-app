@@ -48,7 +48,11 @@ public class ClubsViewAdapter extends RecyclerView.Adapter<ClubsViewHolder> {
 
     @Override
     public int getItemCount() {
-        return clubs.size();
+        if (clubs != null) {
+            return clubs.size();
+        } else {
+            return 0;
+        }
     }
 
     public void setClubs(ListClubs clubs) {

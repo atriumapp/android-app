@@ -1,7 +1,7 @@
 package com.atrium;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +13,7 @@ import com.atrium.service.ClubService;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cat.ereza.customactivityoncrash.CustomActivityOnCrash;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -21,25 +22,21 @@ import retrofit2.Response;
 public class ClubsActivity extends AppCompatActivity {
 
     private static final String TAG = "ClubsActivity";
-
-    private StaggeredGridLayoutManager layoutManager;
-
     @BindView(R.id.main_recycler_view)
     RecyclerView recyclerView;
-
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-
+    ClubService clubApi;
+    private StaggeredGridLayoutManager layoutManager;
     private ListClubs clubs = new ListClubs();
     private ClubsViewAdapter adapter;
-
-    ClubService clubApi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clubs);
         ButterKnife.bind(this);
+        CustomActivityOnCrash.install(this);
 
         clubApi = ((MyApplication) getApplication()).getClubComponent().clubService();
 

@@ -60,6 +60,9 @@ dependencies {
     compile 'me.grantland:autofittextview:0.2.+'
     //html textview
     compile 'org.sufficientlysecure:html-textview:1.8'
+
+    //Error activity
+    compile 'cat.ereza:customactivityoncrash:1.5.0'
 }
 
 buildscript {
