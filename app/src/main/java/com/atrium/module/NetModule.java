@@ -63,7 +63,7 @@ public class NetModule {
                         .build();
 
                 Response response = chain.proceed(request);
-                Answers.getInstance().logLevelEnd(new LevelEndEvent().putLevelName("Response").putCustomAttribute("status",response.code()).putCustomAttribute("time",response.receivedResponseAtMillis()));
+                Answers.getInstance().logLevelEnd(new LevelEndEvent().putLevelName("Response").putCustomAttribute("status",response.code()));
                 return response;
             }
         };

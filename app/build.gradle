@@ -69,7 +69,7 @@ dependencies {
 
     //Error activity
     compile 'cat.ereza:customactivityoncrash:1.5.0'
-    compile('com.crashlytics.sdk.android:crashlytics:2.6.2@aar') {
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {
         transitive = true;
     }
 }

@@ -15,6 +15,8 @@ import com.atrium.activity.ClubDetailActivity;
 import com.atrium.MyApplication;
 import com.atrium.R;
 import com.atrium.adapter.EventsAdapter;
+import com.atrium.callback.CallbackResponse;
+import com.atrium.fabric.event.RequestFailEvent;
 import com.atrium.model.Event;
 import com.atrium.service.EventService;
 import com.atrium.listener.EndlessRecyclerViewScrollListener;
@@ -88,16 +90,15 @@ public class ClubEventsFragement extends Fragment {
                 options.put("page", String.valueOf(page));
                 final Call<PaginationResponse<Event>> requestMore = eventService.findEventByClub(options);
 
-                requestMore.enqueue(new Callback<PaginationResponse<Event>>() {
+                requestMore.enqueue(new CallbackResponse<PaginationResponse<Event>>() {
                     @Override
                     public void onResponse(Call<PaginationResponse<Event>> call, Response<PaginationResponse<Event>> response) {
-                        PaginationResponse<Event> moreResult = response.body();
-                        adapter.updateEventsPagination(moreResult);
-                    }
-
-                    @Override
-                    public void onFailure(Call<PaginationResponse<Event>> call, Throwable t) {
-                        Log.e(TAG, "Request more fail", t);
+                        if(response.isSuccessful()){
+                            PaginationResponse<Event> moreResult = response.body();
+                            adapter.updateEventsPagination(moreResult);
+                        }else {
+                            RequestFailEvent.sendEvent(call, response);
+                        }
                     }
                 });
             }

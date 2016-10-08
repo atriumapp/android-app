@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import com.atrium.activity.ClubDetailActivity;
 import com.atrium.MyApplication;
 import com.atrium.R;
+import com.atrium.callback.CallbackResponse;
+import com.atrium.fabric.event.RequestFailEvent;
 import com.atrium.model.ClubDetail;
 import com.atrium.service.ClubService;
 import com.squareup.picasso.Picasso;
@@ -66,20 +68,19 @@ public class ClubInformationFragment extends Fragment {
 
         final Call<ClubDetail> club = this.clubService.getClub(this.clubId);
 
-        club.enqueue(new Callback<ClubDetail>() {
+        club.enqueue(new CallbackResponse<ClubDetail>() {
             @Override
             public void onResponse(Call<ClubDetail> call, Response<ClubDetail> response) {
-                ClubDetail detail = response.body();
-                Picasso.with(getContext())
-                        .load(detail.getLogo())
-                        .resizeDimen(R.dimen.club_detail_information_image, R.dimen.club_detail_information_image)
-                        .into(imageView);
-                textView.setHtml(detail.getDescription(), new HtmlRemoteImageGetter(textView));
-            }
-
-            @Override
-            public void onFailure(Call<ClubDetail> call, Throwable t) {
-
+                if(response.isSuccessful()){
+                    ClubDetail detail = response.body();
+                    Picasso.with(getContext())
+                            .load(detail.getLogo())
+                            .resizeDimen(R.dimen.club_detail_information_image, R.dimen.club_detail_information_image)
+                            .into(imageView);
+                    textView.setHtml(detail.getDescription(), new HtmlRemoteImageGetter(textView));
+                }else{
+                    RequestFailEvent.sendEvent(call, response);
+                }
             }
         });
 

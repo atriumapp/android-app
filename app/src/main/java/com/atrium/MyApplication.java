@@ -16,6 +16,8 @@ import com.atrium.module.EventModule;
 import com.atrium.module.NetModule;
 import com.atrium.module.NewsModule;
 import com.crashlytics.android.Crashlytics;
+
+import cat.ereza.customactivityoncrash.CustomActivityOnCrash;
 import io.fabric.sdk.android.Fabric;
 
 /**
@@ -32,6 +34,9 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Fabric.with(this, new Crashlytics());
+        CustomActivityOnCrash.install(this);
+        CustomActivityOnCrash.setShowErrorDetails(false);
+        CustomActivityOnCrash.setDefaultErrorActivityDrawable(R.drawable.atrium_logo_hololight);
 
         netComponent = DaggerNetComponent.builder()
                 .applicationModule(new ApplicationModule(this))
