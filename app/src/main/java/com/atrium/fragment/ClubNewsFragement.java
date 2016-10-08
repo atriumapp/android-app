@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import com.atrium.activity.ClubDetailActivity;
 import com.atrium.MyApplication;
 import com.atrium.R;
+import com.atrium.callback.CallbackResponse;
+import com.atrium.fabric.event.RequestFailEvent;
 import com.atrium.listener.EndlessRecyclerViewScrollListener;
 import com.atrium.adapter.NewsAdapter;
 import com.atrium.model.News;
@@ -101,20 +103,18 @@ public class ClubNewsFragement extends Fragment {
 
         Call<PaginationResponse<News>> request = newsService.findNewsByClub(options);
 
-        request.enqueue(new Callback<PaginationResponse<News>>() {
+        request.enqueue(new CallbackResponse<PaginationResponse<News>>() {
             @Override
             public void onResponse(Call<PaginationResponse<News>> call, Response<PaginationResponse<News>> response) {
-                news = response.body();
-                newsAdapter.setNews(news);
-                newsAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onFailure(Call<PaginationResponse<News>> call, Throwable t) {
-                Log.e(TAG, "Request fail", t);
+                if(response.isSuccessful()){
+                    news = response.body();
+                    newsAdapter.setNews(news);
+                    newsAdapter.notifyDataSetChanged();
+                }else{
+                    RequestFailEvent.sendEvent(call, response);
+                }
             }
         });
-
         return view;
     }
 

@@ -22,6 +22,9 @@
         <activity android:name=".activity.ClubDetailActivity" />
         <activity android:name=".activity.EventActivity" />
         <activity android:name=".activity.NewsActivity"></activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="e9e4537e03eb0b817c6baaf817b85140c2d47805" />
     </application>
 
 </manifest>
