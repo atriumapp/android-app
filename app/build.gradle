@@ -12,7 +12,7 @@ android {
     buildToolsVersion "24.0.0"
 
     defaultConfig {
-        applicationId "com.atrium"
+        applicationId "com.atriumapp"
         minSdkVersion 19
         targetSdkVersion 24
         versionCode 1
