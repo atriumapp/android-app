@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="@dimen/clubs_card_view_width"
-    android:layout_height="@dimen/clubs_card_view_height"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginBottom="@dimen/clubs_card_view_marginBottom"
     android:id="@+id/clubs_card_view"
     app:cardElevation="@dimen/clubs_card_view_elevation"
     app:cardUseCompatPadding="true"
-    android:textAlignment="center">
+    android:textAlignment="center"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,9 +15,10 @@
 
         <ImageView
             android:id="@+id/clubs_image_view"
-            android:layout_width="@dimen/clubs_image_view_width"
+            android:contentDescription="Image club"
             android:layout_height="@dimen/clubs_images_view_height"
-            android:contentDescription="Image club" />
+            android:layout_width="@dimen/clubs_image_view_width"
+            android:paddingLeft="30dp"/>
 
         <TextView
             android:id="@+id/clubs_name_view"

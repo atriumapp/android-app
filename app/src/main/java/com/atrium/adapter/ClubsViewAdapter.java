@@ -11,6 +11,7 @@ import com.atrium.holder.ClubsViewHolder;
 import com.atrium.listener.ChoiceClubsListener;
 import com.atrium.model.Club;
 import com.atrium.model.ListClubs;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -33,13 +34,20 @@ public class ClubsViewAdapter extends RecyclerView.Adapter<ClubsViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(ClubsViewHolder holder, int position) {
+    public void onBindViewHolder(final ClubsViewHolder holder, int position) {
         Club club = clubs.get(position);
         if(club.getLogo() != null){
             Picasso.with(context)
                     .load(club.getLogo())
                     .resizeDimen(R.dimen.clubs_image_view_width, R.dimen.clubs_images_view_height)
-                    .into(holder.getImage());
+                    .into(holder.getImage(), new Callback.EmptyCallback(){
+                        @Override
+                        public void onError() {
+                            holder.getImage().setImageResource(R.mipmap.image_default);
+                        }
+                    });
+        }else{
+            holder.getImage().setImageResource(R.drawable.default_club_image);
         }
         holder.getName().setText(club.getName());
 
@@ -48,7 +56,11 @@ public class ClubsViewAdapter extends RecyclerView.Adapter<ClubsViewHolder> {
 
     @Override
     public int getItemCount() {
-        return clubs.size();
+        if (clubs != null) {
+            return clubs.size();
+        } else {
+            return 0;
+        }
     }
 
     public void setClubs(ListClubs clubs) {

@@ -1,7 +1,7 @@
 package com.atrium.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,6 +17,7 @@ import org.sufficientlysecure.htmltextview.HtmlTextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cat.ereza.customactivityoncrash.CustomActivityOnCrash;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -25,27 +26,23 @@ public class EventActivity extends AppCompatActivity {
 
     public static String EVENT_KEY = "EVENT";
     private static String TAG = EventActivity.class.getName();
-
-    private String eventId;
-    private EventService eventService;
-
     @BindView(R.id.iv_event_image)
     ImageView imageView;
-
     @BindView(R.id.tv_event_title)
     TextView title;
-
     @BindView(R.id.tv_event_time)
     TextView time;
-
     @BindView(R.id.tv_event_descriptoion)
     HtmlTextView desciption;
+    private String eventId;
+    private EventService eventService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
         ButterKnife.bind(this);
+        CustomActivityOnCrash.install(this);
 
         eventService = ((MyApplication) getApplication()).getEventComponent().eventService();
 

@@ -4,6 +4,9 @@ import android.app.Application;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.crashlytics.android.answers.Answers;
+import com.crashlytics.android.answers.LevelEndEvent;
+import com.crashlytics.android.answers.LevelStartEvent;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -53,12 +56,15 @@ public class NetModule {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request original = chain.request();
+                Answers.getInstance().logLevelStart(new LevelStartEvent().putLevelName("Request").putCustomAttribute("url",original.url().url().toString()));
 
                 Request request = original.newBuilder()
                         .header("Accept", "application/json")
                         .build();
 
-                return chain.proceed(request);
+                Response response = chain.proceed(request);
+                Answers.getInstance().logLevelEnd(new LevelEndEvent().putLevelName("Response").putCustomAttribute("status",response.code()));
+                return response;
             }
         };
     }
